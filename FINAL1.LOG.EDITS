@@ -1,0 +1,448 @@
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0                         Date 11/28/2019  Time 14:05:56   Page     1                
+0Invocation parameters:                                                                                                              
+  TEST,RENT,APOST,OBJECT,NODYNAM,LIB,SIZE(2097152)                                                                                   
+0Options in effect:                                                                                                                  
+  NOADATA                                                                                                                            
+    ADV                                                                                                                              
+    APOST                                                                                                                            
+    ARITH(COMPAT)                                                                                                                    
+  NOAWO                                                                                                                              
+  NOBLOCK0                                                                                                                           
+    BUFSIZE(4096)                                                                                                                    
+  NOCICS                                                                                                                             
+    CODEPAGE(1140)                                                                                                                   
+  NOCOMPILE(S)                                                                                                                       
+  NOCURRENCY                                                                                                                         
+    DATA(31)                                                                                                                         
+  NODATEPROC                                                                                                                         
+    DBCS                                                                                                                             
+  NODECK                                                                                                                             
+  NODIAGTRUNC                                                                                                                        
+  NODLL                                                                                                                              
+  NODUMP                                                                                                                             
+  NODYNAM                                                                                                                            
+  NOEXIT                                                                                                                             
+  NOEXPORTALL                                                                                                                        
+  NOFASTSRT                                                                                                                          
+    FLAG(I,I)                                                                                                                        
+  NOFLAGMIG4                                                                                                                         
+  NOFLAGSTD                                                                                                                          
+    INTDATE(ANSI)                                                                                                                    
+    LANGUAGE(EN)                                                                                                                     
+    LIB                                                                                                                              
+    LINECOUNT(60)                                                                                                                    
+  NOLIST                                                                                                                             
+  NOMAP                                                                                                                              
+  NOMDECK                                                                                                                            
+  NONAME                                                                                                                             
+    NSYMBOL(NATIONAL)                                                                                                                
+  NONUMBER                                                                                                                           
+    NUMPROC(NOPFD)                                                                                                                   
+    OBJECT                                                                                                                           
+  NOOFFSET                                                                                                                           
+  NOOPTIMIZE                                                                                                                         
+    OUTDD(SYSOUT)                                                                                                                    
+    PGMNAME(COMPAT)                                                                                                                  
+    RENT                                                                                                                             
+    RMODE(AUTO)                                                                                                                      
+    SEQUENCE                                                                                                                         
+    SIZE(2097152)                                                                                                                    
+    SOURCE                                                                                                                           
+    SPACE(1)                                                                                                                         
+  NOSQL                                                                                                                              
+    SQLCCSID                                                                                                                         
+  NOSSRANGE                                                                                                                          
+  NOTERM                                                                                                                             
+    TEST(HOOK,NOSEPARATE,NOEJPD)                                                                                                     
+  NOTHREAD                                                                                                                           
+    TRUNC(STD)                                                                                                                       
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0                         Date 11/28/2019  Time 14:05:56   Page     2                
+0 NOVBREF                                                                                                                            
+  NOWORD                                                                                                                             
+    XMLPARSE(XMLSS)                                                                                                                  
+    XREF(FULL)                                                                                                                       
+  NOZONECHECK                                                                                                                        
+    YEARWINDOW(1900)                                                                                                                 
+    ZWB                                                                                                                              
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     3                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0/* EDITS                                                                                                                            
+   000001               * Copy the KC02708.FINAL1.COBOL data set to your userid KC03XXX                                              
+   000002               *                                                                                                            
+   000003               * For each program in your solution:                                                                         
+   000004               * - Copy the EMPTY.cbl member to an appropriate name                                                         
+   000005               *      for your solution                                                                                     
+   000006               * - Copy your COBOL source file on your PC                                                                   
+   000007               * - Paste source into this file                                                                              
+   000008               * - Save                                                                                                     
+   000009               *                                                                                                            
+   000010                                                                                                                            
+   000011                identification division.                                                                                    
+   000012                program-id. Edits.                                                                                          
+   000013                author. Jared Howie.                                                                                        
+   000014                environment division.                                                                                       
+   000015                input-output section.                                                                                       
+   000016                file-control.                                                                                               
+   000017                    select sales-file ASSIGN TO POSDATA                                   30                                
+   000018                        ORGANIZATION IS SEQUENTIAL.                                                                         
+   000019                                                                                                                            
+   000020                    select error-report ASSIGN TO ERRORS                                  53                                
+   000021                        ORGANIZATION IS SEQUENTIAL.                                                                         
+   000022                                                                                                                            
+   000023                    select error-data ASSIGN TO INVDAT                                    63                                
+   000024                        ORGANIZATION IS SEQUENTIAL.                                                                         
+   000025                                                                                                                            
+   000026                    select valid-data ASSIGN TO VALID                                     71                                
+   000027                        ORGANIZATION IS SEQUENTIAL.                                                                         
+   000028                data division.                                                                                              
+   000029                file section.                                                                                               
+   000030                fd  sales-file                                                                                              
+   000031                    RECORDING MODE IS F                                                                                     
+   000032                    data record is sales-rec.                                             *                                 
+   000033                                                                                                                            
+   000034                01  sales-rec.                                                                                              
+   000035                    05 sr-trans-code     pic x.                                                                             
+   000036                    05 sr-trans-amt      pic 9(5)v99.                                                                       
+   000037                    05 sr-pay-type       pic xx.                                                                            
+   000038                    05 sr-store-num      pic 99.                                                                            
+   000039                     88 valid-store-numbers                                                                                 
+   000040                            value 01 thru 05, 12.                                                                           
+   000041                    05 sr-inv-num-x1    pic x.                                                                              
+   000042                        88 valid-x1                                                                                         
+   000043                         value 'A', 'B', 'C', 'D', 'E'.                                                                     
+   000044                    05 sr-inv-num-x2    pic x.                                                                              
+   000045                         88 valid-x2                                                                                        
+   000046                         value 'A', 'B', 'C', 'D', 'E'.                                                                     
+   000047                    05 sr-inv-num-dash  pic x.                                                                              
+   000048                    05 sr-inv-num       pic 9(6).                                                                           
+   000049                    05 sr-sku-num       pic 9(15).                                                                          
+   000050                                                                                                                            
+   000051                                                                                                                            
+   000052                                                                                                                            
+   000053                fd error-report                                                                                             
+   000054                    RECORDING MODE IS F                                                                                     
+   000055                    data record is err-report.                                            *                                 
+   000056                                                                                                                            
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     4                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000057                01 err-report.                                                                                              
+   000058                    05 rpt-raw-data      pic x(36).                                                                         
+   000059                    05 filler            pic x(3).                                                                          
+   000060                    05 rpt-error-message pic x(70).                                                                         
+   000061                                                                                                                            
+   000062                                                                                                                            
+   000063                fd error-data                                                                                               
+   000064                    RECORDING MODE IS F                                                                                     
+   000065                    data record is err-data.                                              *                                 
+   000066                                                                                                                            
+   000067                01 err-data.                                                                                                
+   000068                    05 err-raw-data     pic x(36).                                                                          
+   000069                                                                                                                            
+   000070                                                                                                                            
+   000071                fd valid-data                                                                                               
+   000072                    RECORDING MODE IS F                                                                                     
+   000073                    data record is vld-data.                                              *                                 
+   000074                                                                                                                            
+   000075                01 vld-data.                                                                                                
+   000076                    05 vld-raw-data     pic x(36).                                                                          
+   000077                                                                                                                            
+   000078                working-storage section.                                                                                    
+   000079                                                                                                                            
+   000080                01  sw-eof                pic x value 'n'.                                                                  
+   000081                                                                                                                            
+   000082                01  ws-has-error          pic x value 'n'.                                                                  
+   000083                                                                                                                            
+   000084                01 ws-first-error         pic x value 'y'.                                                                  
+   000085                                                                                                                            
+   000086                01  title-line.                                                                                             
+   000087                    05 filler             pic x(26).                                                                        
+   000088                    05 filler             pic x(12)                                                                         
+   000089                        value "ERROR REPORT".                                                                               
+   000090                01  heading-line1.                                                                                          
+   000091                    05  filler            pic x(8)                                                                          
+   000092                        value "Raw Data".                                                                                   
+   000093                    05  filler            pic x(39)                                                                         
+   000094                        value spaces.                                                     IMP                               
+   000095                    05  filler            pic x(14)                                                                         
+   000096                        value "Error Messages".                                                                             
+   000097                                                                                                                            
+   000098                01  underlines.                                                                                             
+   000099                                                                                                                            
+   000100                    05  filler            pic x(10)                                                                         
+   000101                        value "----------".                                                                                 
+   000102                    05  filler            pic x(36)                                                                         
+   000103                        value spaces.                                                     IMP                               
+   000104                    05  filler            pic x(16)                                                                         
+   000105                        value "----------------".                                                                           
+   000106                                                                                                                            
+   000107                01 ws-error-messages.                                                                                       
+   000108                                                                                                                            
+   000109                   05 ws-trans-code-error   pic x(16)                                                                       
+   000110                    value 'WRONG TRANS CODE'.                                                                               
+   000111                   05 ws-trans-amnt-error       pic x(24)                                                                   
+   000112                    value 'TRANS AMNT NOT NUMERERIC'.                                                                       
+   000113                   05 ws-payment-type-error  pic x(19)                                                                      
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     5                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000114                    value 'WRONG PAYMENT TYPE'.                                                                             
+   000115                   05 ws-store-num-error   pic x(20)                                                                        
+   000116                    value 'INVALID STORE NUMBER'.                                                                           
+   000117                   05 ws-inv-alpha-error               pic x(30)                                                            
+   000118                    value 'INVALID INVOICE NUMBER LETTERS'.                                                                 
+   000119                   05 ws-inv-in-num              pic x(23)                                                                  
+   000120                    value 'INVALID INVOICE NUMBERS'.                                                                        
+   000121                   05 ws-sku-error                     pic x(14)                                                            
+   000122                    value 'EMPTY SKU CODE'.                                                                                 
+   000123                                                                                                                            
+   000124                01 ws-totals-line.                                                                                          
+   000125                    05 filler           pic x(9)                                                                            
+   000126                        value "RECORDS: ".                                                                                  
+   000127                    05 ws-tl-records     pic zz9.                                                                           
+   000128                    05 filler           pic x(3)                                                                            
+   000129                        value spaces.                                                     IMP                               
+   000130                    05 filler           pic x(6)                                                                            
+   000131                        value "GOOD: ".                                                                                     
+   000132                    05 ws-tl-good     pic zz9.                                                                              
+   000133                    05 filler           pic x(3)                                                                            
+   000134                        value spaces.                                                     IMP                               
+   000135                    05 filler           pic x(7)                                                                            
+   000136                        value "ERROR: ".                                                                                    
+   000137                    05 ws-tl-error      pic zz9.                                                                            
+   000138                                                                                                                            
+   000139                77 ws-record-count        pic 999 value 0.                                                                  
+   000140                                                                                                                            
+   000141                77 ws-ok-records-count    pic 999 value 0.                                                                  
+   000142                77 ws-error-records-count       pic 999 value 0.                                                            
+   000143                procedure division.                                                                                         
+   000144                000-main.                                                                                                   
+   000145                                                                                                                            
+   000146                    open INPUT sales-file,                                                30                                
+   000147                        OUTPUT error-report,                                              53                                
+   000148                        OUTPUT error-data,                                                63                                
+   000149                        OUTPUT valid-data.                                                71                                
+   000150                                                                                                                            
+   000151                    read sales-file at end move 'y' to sw-eof.                            30 80                             
+   000152                    perform 75-print-headings.                                            167                               
+   000153                    perform 100-process-lines                                             171                               
+   000154                        until sw-eof = 'y'.                                               80                                
+   000155                                                                                                                            
+   000156                    perform 50-print-totals.                                              161                               
+   000157                                                                                                                            
+   000158                    close sales-file, error-data, error-report, valid-data.               30 63 53 71                       
+   000159                                                                                                                            
+   000160                    goback.                                                                                                 
+   000161                50-print-totals.                                                                                            
+   000162                    move ws-record-count to ws-tl-records.                                139 127                           
+   000163                    move ws-ok-records-count to ws-tl-good.                               141 132                           
+   000164                    move ws-error-records-count to ws-tl-error.                           142 137                           
+   000165                    write err-report from ws-totals-line.                                 57 124                            
+   000166                                                                                                                            
+   000167                75-print-headings.                                                                                          
+   000168                    write err-report from title-line after advancing 1 line.              57 86                             
+   000169                    write err-report from heading-line1 after advancing 2 line.           57 90                             
+   000170                    write err-report from underlines.                                     57 98                             
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     6                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000171                100-process-lines.                                                                                          
+   000172                                                                                                                            
+   000173                                                                                                                            
+   000174                                                                                                                            
+   000175                    move 'y' to ws-first-error.                                           84                                
+   000176                    move 'n' to ws-has-error.                                             82                                
+   000177                    move sales-rec to rpt-raw-data.                                       34 58                             
+   000178                    perform 200-check-trans-code.                                         205                               
+   000179                                                                                                                            
+   000180                    if(ws-has-error = 'n') then                                           82                                
+   000181      1                add 1 to ws-ok-records-count                                       141                               
+   000182      1                add 1 to ws-record-count                                           139                               
+   000183      1                move sales-rec to vld-raw-data                                     34 76                             
+   000184      1                write vld-data                                                     75                                
+   000185                    else                                                                                                    
+   000186      1                add 1 to ws-error-records-count                                    142                               
+   000187      1                add 1 to ws-record-count                                           139                               
+   000188      1                move sales-rec to err-raw-data                                     34 68                             
+   000189      1                write err-data                                                     67                                
+   000190                    end-if.                                                                                                 
+   000191                    move spaces to err-report.                                            IMP 57                            
+   000192                     read sales-file at end move 'y' to sw-eof.                           30 80                             
+   000193                150-print-errors.                                                                                           
+   000194                    if(ws-first-error = 'y')then                                          84                                
+   000195                                                                                                                            
+   000196      1                 write err-report                                                  57                                
+   000197      1                 move sales-rec to err-data                                        34 67                             
+   000198      1                 move spaces to err-report                                         IMP 57                            
+   000199      1                 move 'n' to ws-first-error                                        84                                
+   000200                    else                                                                                                    
+   000201                                                                                                                            
+   000202      1                 write err-report                                                  57                                
+   000203      1                 move spaces to err-report                                         IMP 57                            
+   000204                    end-if.                                                                                                 
+   000205                200-check-trans-code.                                                                                       
+   000206                                                                                                                            
+   000207                    if (sr-trans-code = 'S') then                                         35                                
+   000208      1                  NEXT SENTENCE                                                                                      
+   000209                    else                                                                                                    
+   000210      1                  if (sr-trans-code = 'R') then                                    35                                
+   000211      2                      NEXT SENTENCE                                                                                  
+   000212      1                  else                                                                                               
+   000213      2                      if (sr-trans-code = 'L') then                                35                                
+   000214      3                          NEXT SENTENCE                                                                              
+   000215      2                      else                                                                                           
+   000216      3                          move ws-trans-code-error to rpt-error-message            109 60                            
+   000217      3                          perform 150-print-errors                                 193                               
+   000218      3                          move 'y' to ws-has-error                                 82                                
+   000219      2                      end-if                                                                                         
+   000220      1                  end-if                                                                                             
+   000221                    end-if.                                                                                                 
+   000222                    perform 300-check-trans-amnt.                                         223                               
+   000223                300-check-trans-amnt.                                                                                       
+   000224                                                                                                                            
+   000225                    if(sr-trans-amt is not numeric) then                                  36                                
+   000226      1                 move ws-trans-amnt-error to rpt-error-message                     111 60                            
+   000227      1                 perform 150-print-errors                                          193                               
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     7                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0  000228      1                 move 'y' to ws-has-error                                          82                                
+   000229                    end-if.                                                                                                 
+   000230                    perform 400-check-payment-type.                                       231                               
+   000231                400-check-payment-type.                                                                                     
+   000232                    if (sr-pay-type = 'CA') then                                          37                                
+   000233      1                  NEXT SENTENCE                                                                                      
+   000234                    else                                                                                                    
+   000235      1                  if (sr-pay-type = 'CR') then                                     37                                
+   000236      2                      NEXT SENTENCE                                                                                  
+   000237      1                  else                                                                                               
+   000238      2                      if (sr-pay-type = 'DB')                                      37                                
+   000239      3                          NEXT SENTENCE                                                                              
+   000240      2                      else                                                                                           
+   000241      3                          move ws-payment-type-error to rpt-error-message          113 60                            
+   000242      3                          perform 150-print-errors                                 193                               
+   000243      3                          move 'y' to ws-has-error                                 82                                
+   000244      2                      end-if                                                                                         
+   000245      1                  end-if                                                                                             
+   000246                    end-if.                                                                                                 
+   000247                    perform 500-check-store-num.                                          248                               
+   000248                500-check-store-num.                                                                                        
+   000249                    if(valid-store-numbers) then                                          39                                
+   000250      1                  NEXT SENTENCE                                                                                      
+   000251                    else                                                                                                    
+   000252      1                 move ws-store-num-error to rpt-error-message                      115 60                            
+   000253      1                 perform 150-print-errors                                          193                               
+   000254      1                 move 'y' to ws-has-error                                          82                                
+   000255                                                                                                                            
+   000256                    end-if.                                                                                                 
+   000257                    perform 600-check-invoice-number.                                     258                               
+   000258                600-check-invoice-number.                                                                                   
+   000259                    if(valid-x1 and valid-x2 )then                                        42 45                             
+   000260      1                 if(sr-inv-num-x1 = sr-inv-num-x2)then                             41 44                             
+   000261      2                     move ws-inv-alpha-error to rpt-error-message                  117 60                            
+   000262      2                     perform 150-print-errors                                      193                               
+   000263      2                     move 'y' to ws-has-error                                      82                                
+   000264      1                 end-if                                                                                              
+   000265                    else                                                                                                    
+   000266      1                 move ws-inv-alpha-error to rpt-error-message                      117 60                            
+   000267      1                 perform 150-print-errors                                          193                               
+   000268      1                 move 'y' to ws-has-error                                          82                                
+   000269                    end-if.                                                                                                 
+   000270                                                                                                                            
+   000271                    if(sr-inv-num > 900000 or sr-inv-num < 100000 OR                      48 48                             
+   000272                       sr-inv-num is not numeric)then                                     48                                
+   000273      1                 move ws-inv-in-num to rpt-error-message                           119 60                            
+   000274      1                 perform 150-print-errors                                          193                               
+   000275      1                 move 'y' to ws-has-error                                          82                                
+   000276                    end-if.                                                                                                 
+   000277                    perform 700-check-sku-code.                                           278                               
+   000278                700-check-sku-code.                                                                                         
+   000279                    if(sr-sku-num = spaces)then                                           49 IMP                            
+   000280      1                 move ws-sku-error to rpt-error-message                            121 60                            
+   000281      1                 perform 150-print-errors                                          193                               
+   000282      1                 move 'y' to ws-has-error                                          82                                
+   000283                    end-if.                                                                                                 
+   000284                end program Edits.                                                        12                                
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     8                
+   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+0*/ EDITS                                                                                                                            
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page     9                
+0An "M" preceding a data-name reference indicates that the data-name is modified by this reference.                                  
+                                                                                                                                     
+  Defined   Cross-reference of data names   References                                                                               
+                                                                                                                                     
+       67   ERR-DATA . . . . . . . . . . .  189 M197                                                                                 
+       68   ERR-RAW-DATA . . . . . . . . .  M188                                                                                     
+       57   ERR-REPORT . . . . . . . . . .  M165 M168 M169 M170 M191 196 M198 202 M203                                               
+       63   ERROR-DATA . . . . . . . . . .  23 148 158                                                                               
+       53   ERROR-REPORT . . . . . . . . .  20 147 158                                                                               
+       90   HEADING-LINE1. . . . . . . . .  169                                                                                      
+       60   RPT-ERROR-MESSAGE. . . . . . .  M216 M226 M241 M252 M261 M266 M273 M280                                                  
+       58   RPT-RAW-DATA . . . . . . . . .  M177                                                                                     
+       30   SALES-FILE . . . . . . . . . .  17 146 151 158 192                                                                       
+       34   SALES-REC. . . . . . . . . . .  177 183 188 197                                                                          
+       48   SR-INV-NUM . . . . . . . . . .  271 271 272                                                                              
+       47   SR-INV-NUM-DASH                                                                                                          
+       41   SR-INV-NUM-X1. . . . . . . . .  260                                                                                      
+       44   SR-INV-NUM-X2. . . . . . . . .  260                                                                                      
+       37   SR-PAY-TYPE. . . . . . . . . .  232 235 238                                                                              
+       49   SR-SKU-NUM . . . . . . . . . .  279                                                                                      
+       38   SR-STORE-NUM                                                                                                             
+       36   SR-TRANS-AMT . . . . . . . . .  225                                                                                      
+       35   SR-TRANS-CODE. . . . . . . . .  207 210 213                                                                              
+       80   SW-EOF . . . . . . . . . . . .  M151 154 M192                                                                            
+       86   TITLE-LINE . . . . . . . . . .  168                                                                                      
+       98   UNDERLINES . . . . . . . . . .  170                                                                                      
+       71   VALID-DATA . . . . . . . . . .  26 149 158                                                                               
+       39   VALID-STORE-NUMBERS. . . . . .  249                                                                                      
+       42   VALID-X1 . . . . . . . . . . .  259                                                                                      
+       45   VALID-X2 . . . . . . . . . . .  259                                                                                      
+       75   VLD-DATA . . . . . . . . . . .  184                                                                                      
+       76   VLD-RAW-DATA . . . . . . . . .  M183                                                                                     
+      107   WS-ERROR-MESSAGES                                                                                                        
+      142   WS-ERROR-RECORDS-COUNT . . . .  164 M186                                                                                 
+       84   WS-FIRST-ERROR . . . . . . . .  M175 194 M199                                                                            
+       82   WS-HAS-ERROR . . . . . . . . .  M176 180 M218 M228 M243 M254 M263 M268 M275 M282                                         
+      117   WS-INV-ALPHA-ERROR . . . . . .  261 266                                                                                  
+      119   WS-INV-IN-NUM. . . . . . . . .  273                                                                                      
+      141   WS-OK-RECORDS-COUNT. . . . . .  163 M181                                                                                 
+      113   WS-PAYMENT-TYPE-ERROR. . . . .  241                                                                                      
+      139   WS-RECORD-COUNT. . . . . . . .  162 M182 M187                                                                            
+      121   WS-SKU-ERROR . . . . . . . . .  280                                                                                      
+      115   WS-STORE-NUM-ERROR . . . . . .  252                                                                                      
+      137   WS-TL-ERROR. . . . . . . . . .  M164                                                                                     
+      132   WS-TL-GOOD . . . . . . . . . .  M163                                                                                     
+      127   WS-TL-RECORDS. . . . . . . . .  M162                                                                                     
+      124   WS-TOTALS-LINE . . . . . . . .  165                                                                                      
+      111   WS-TRANS-AMNT-ERROR. . . . . .  226                                                                                      
+      109   WS-TRANS-CODE-ERROR. . . . . .  216                                                                                      
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page    10                
+0Context usage is indicated by the letter preceding a procedure-name reference.                                                      
+ These letters and their meanings are:                                                                                               
+     A = ALTER (procedure-name)                                                                                                      
+     D = GO TO (procedure-name) DEPENDING ON                                                                                         
+     E = End of range of (PERFORM) through (procedure-name)                                                                          
+     G = GO TO (procedure-name)                                                                                                      
+     P = PERFORM (procedure-name)                                                                                                    
+     T = (ALTER) TO PROCEED TO (procedure-name)                                                                                      
+     U = USE FOR DEBUGGING (procedure-name)                                                                                          
+                                                                                                                                     
+  Defined   Cross-reference of procedures   References                                                                               
+                                                                                                                                     
+      144   000-MAIN                                                                                                                 
+      171   100-PROCESS-LINES. . . . . . .  P153                                                                                     
+      193   150-PRINT-ERRORS . . . . . . .  P217 P227 P242 P253 P262 P267 P274 P281                                                  
+      205   200-CHECK-TRANS-CODE . . . . .  P178                                                                                     
+      223   300-CHECK-TRANS-AMNT . . . . .  P222                                                                                     
+      231   400-CHECK-PAYMENT-TYPE . . . .  P230                                                                                     
+      161   50-PRINT-TOTALS. . . . . . . .  P156                                                                                     
+      248   500-CHECK-STORE-NUM. . . . . .  P247                                                                                     
+      258   600-CHECK-INVOICE-NUMBER . . .  P257                                                                                     
+      278   700-CHECK-SKU-CODE . . . . . .  P277                                                                                     
+      167   75-PRINT-HEADINGS. . . . . . .  P152                                                                                     
+1PP 5655-S71 IBM Enterprise COBOL for z/OS  4.2.0               EDITS     Date 11/28/2019  Time 14:05:56   Page    11                
+0 Defined   Cross-reference of programs     References                                                                               
+                                                                                                                                     
+       12   EDITS. . . . . . . . . . . . .  284                                                                                      
+-* Statistics for COBOL program EDITS:                                                                                               
+ *    Source records = 284                                                                                                           
+ *    Data Division statements = 41                                                                                                  
+ *    Procedure Division statements = 79                                                                                             
+0End of compilation 1,  program EDITS,  no statements flagged.                                                                       
+0Return code 0                                                                                                                       

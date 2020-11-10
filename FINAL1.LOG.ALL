@@ -1,0 +1,118 @@
+1                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+0 
+ 14.28.07 JOB05551 ---- THURSDAY,  28 NOV 2019 ----
+ 14.28.07 JOB05551  IRR010I  USERID KC03G36  IS ASSIGNED TO THIS JOB.
+ 14.28.09 JOB05551  ICH70001I KC03G36  LAST ACCESS AT 14:25:54 ON THURSDAY, NOVEMBER 28, 2019
+ 14.28.09 JOB05551  $HASP373 KC03G36A STARTED - INIT 2    - CLASS A        - SYS 2964
+ 14.28.10 JOB05551  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 14.28.10 JOB05551  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 14.28.10 JOB05551  -STEPNN1              00      4      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.10 JOB05551  -STEPNN2              00      5      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.11 JOB05551  -STEPNN3              00      5      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.11 JOB05551  -FINAL1               00    431     19       .00       .00     .0            17  BATCH        0     0     0     0
+ 14.28.12 JOB05551  -STEPNN1              00      5      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.12 JOB05551  -STEPNN2              00      4      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.12 JOB05551  -STEPNN3              00      4      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.13 JOB05551  -FINAL1               00    284     13       .00       .00     .0            12  BATCH        0     0     0     0
+ 14.28.13 JOB05551  -STEPNN1              00      4      1       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.14 JOB05551  -FINAL1               00    236      9       .00       .00     .0             9  BATCH        0     0     0     0
+ 14.28.14 JOB05551  -STEPNN1              00     49    103       .00       .00     .0                BATCH        0     0     0     0
+ 14.28.15 JOB05551  -FINAL1               00     86      4       .00       .00     .0             3  BATCH        0     0     0     0
+ 14.28.15 JOB05551  -KC03G36A ENDED.  NAME-                     TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+ 14.28.15 JOB05551  $HASP395 KC03G36A ENDED - RC=0000
+0------ JES2 JOB STATISTICS ------
+-  28 NOV 2019 JOB EXECUTION DATE
+-           86 CARDS READ
+-          144 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-           29 SYSOUT SPOOL KBYTES
+-         0.12 MINUTES EXECUTION TIME
+         1 //KC03G36A    JOB  MSGLEVEL=(0,0)                                       JOB05551
+ ICH70001I KC03G36  LAST ACCESS AT 14:25:54 ON THURSDAY, NOVEMBER 28, 2019
+ IEF142I KC03G36A STEPNN1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN1 /START 2019332.1428
+ IEF032I STEP/STEPNN1 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   232K  EXT:        0K  SYS:    12224K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN2 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN2 /START 2019332.1428
+ IEF032I STEP/STEPNN2 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   236K  EXT:        0K  SYS:    12220K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN3 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN3 /START 2019332.1428
+ IEF032I STEP/STEPNN3 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   232K  EXT:        0K  SYS:    12220K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A FINAL1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/FINAL1  /START 2019332.1428
+ IEF032I STEP/FINAL1  /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:   120K  SYS:   268K  EXT:      804K  SYS:    12380K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN1 /START 2019332.1428
+ IEF032I STEP/STEPNN1 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   236K  EXT:        0K  SYS:    12324K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN2 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN2 /START 2019332.1428
+ IEF032I STEP/STEPNN2 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   236K  EXT:        0K  SYS:    12324K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN3 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN3 /START 2019332.1428
+ IEF032I STEP/STEPNN3 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   236K  EXT:        0K  SYS:    12324K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A FINAL1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/FINAL1  /START 2019332.1428
+ IEF032I STEP/FINAL1  /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:   120K  SYS:   268K  EXT:      804K  SYS:    12384K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN1 /START 2019332.1428
+ IEF032I STEP/STEPNN1 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   240K  EXT:        0K  SYS:    12324K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A FINAL1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/FINAL1  /START 2019332.1428
+ IEF032I STEP/FINAL1  /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:   120K  SYS:   256K  EXT:      808K  SYS:    12384K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A STEPNN1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/STEPNN1 /START 2019332.1428
+ IEF032I STEP/STEPNN1 /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:     4K  SYS:   240K  EXT:        0K  SYS:    12324K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF142I KC03G36A FINAL1 - STEP WAS EXECUTED - COND CODE 0000
+ IEF373I STEP/FINAL1  /START 2019332.1428
+ IEF032I STEP/FINAL1  /STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+         VIRT:   120K  SYS:   264K  EXT:      804K  SYS:    12384K
+         ATB- REAL:                  4128K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF375I  JOB/KC03G36A/START 2019332.1428
+ IEF033I  JOB/KC03G36A/STOP  2019332.1428 
+         CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
